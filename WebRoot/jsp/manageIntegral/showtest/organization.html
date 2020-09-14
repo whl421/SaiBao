@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>organization- 组织机构</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <link rel="shortcut icon" href="H5.ico"> 
+	<link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<!-- 	列表控件 -->
+    <link href="../js/dist/bootstrap-table.min.css" rel="stylesheet">
+    
+	<script src="../js/dist/bootstrap-table.min.js"></script>
+	<script src="../js/dist/bootstrap-table-locale-all.js"></script>
+	<script src="../js/dist/extensions/export/bootstrap-table-export.js"></script>
+	<script src="../js/dist/extensions/export/tableExport.min.js"></script>
+	<script src="../js/dist/extensions/export/xlsx.core.min.js"></script>
+	<script src="../js/dist/extensions/export/FileSaver.min.js"></script>
+	<!-- <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script> -->
+	<script src="../js/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<!-- 	<script src="../js/demo/bootstrap-table-demo.js"></script> -->
+<!-- 下拉控件	 -->
+	<link rel="stylesheet" href="../css/bootstrap-select.css">
+	<script src="../js/bootstrap-select.js"></script>
+
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/organization.css?v=4.1.0" rel="stylesheet">
+    
+<!--     时间控件 -->
+	<link href="../css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"></link> 
+	<script src="../js/bootstrap-datetimepicker.min.js"></script>
+	<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+
+	<!--              树形结构引入css样式        	 -->
+    <link href="../css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+	
+	
+	<style>
+	   .fixed-table-container thead th .sortable {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC");
+        cursor: pointer;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+       }
+
+      .fixed-table-container thead th .asc {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg==");
+        cursor: pointer;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+     }
+
+    .fixed-table-container thead th .desc {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZUlEQVQ4y2NgGAWjYBSggaqGu5FA/BOIv2PBIPFEUgxjB+IdQPwfC94HxLykus4GiD+hGfQOiB3J8SojEE9EM2wuSJzcsFMG4ttQgx4DsRalkZENxL+AuJQaMcsGxBOAmGvopk8AVz1sLZgg0bsAAAAASUVORK5CYII= ");
+        cursor: pointer;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+    }
+	.pull-right.pagination-detail{
+display:none;
+}
+	.scrollbar table{
+		min-width:500px;
+	}
+	</style>
+	
+	
+</head>
+
+<body class="gray-bg">
+	<nav class="navigation" >
+		<span class="title" >首页</span>
+		<span class="title" >-</span>
+		<span class="titlethis" >组织机构</span>
+	</nav>
+	 
+-------------------简单table列表，新增，修改，查看（action定向跳转查看），查询（回车查询），删除---------------------------------------------------------------------	
+	
+    <div class="wrapper wrapper-content animated fadeInRight">
+		 <!-- Panel Other -->
+			
+		<div class="ibox-content">
+			<div class="row row-lg">
+	
+				<div class="col-sm-12">
+					
+					<!-- Example Pagination -->
+					<div class="example-wrap">
+							<h5>人员管理</h5>
+							<div class="form-inline">
+								 <div class="form-group">
+									 <label  class="date-label"></label>
+									 <input type="text" class="form-control" id="name" name="tablesearch" placeholder="请名字">
+								 </div>
+								 
+								 <div class="form-group">
+									 <label class="date-label" ></label>
+									  <select class="selectpicker form-control" multiple data-done-button="true"
+									   title="性别选择" id="sex" name="tablesearch">
+									  <option value="1">男</option>
+									  <option value="0">女</option>
+									</select>
+								 </div>
+								 <div class="form-group">
+									 <label  class="date-label"></label>
+									 <input type="text"  class="form-control" id="dayb" name="tablesearch" placeholder="生日">
+									 <input type="text"  class="form-control" id="daye" name="tablesearch" placeholder="至">
+								 </div>
+								  <div class="form-group">
+									 <label  class="date-label"></label>
+									 
+								 </div>
+								 <div class="form-group ">
+									 <a id="search_button" href="javascript:;" class="btn btn-primary queryButton btn-sm form-control-btn"><i class="fa fa-search"></i>查 询</a>
+								 </div>
+								 
+								 
+							</div>	
+						<div class="example">
+							 
+							 <div class="btn-groups hidden-xs" id="exampleToolbar" role="group">
+								<div class="btn-group">
+									<a href="javascript:PopupModalView(null,'refresh','组织机构>>人员新增','900px','50%','organization/personneladded.html');"  class="btn btn-primary btn-sm">
+										<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>新增
+									</a>
+								</div>
+								<!-- <button type="button" class="btn btn-outline btn-default btn-sm">
+									<i class="glyphicon glyphicon-heart" aria-hidden="true"></i>关注
+								</button> -->
+								<div class="btn-group">
+									<button type="button" onclick="updatetable()" class="btn btn-info btn-sm">
+										<i class="fa fa-wrench" aria-hidden="true"></i>编辑
+									</button>
+								</div>
+								<div class="btn-group">
+									<button type="button" onclick="deletetable()" class="btn btn-warning btn-sm">
+										<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>删除
+									</button>
+								</div>
+							</div>
+							<div class="scrollbar" >
+								<table id="exampleTablePagination"  >
+								</table>
+							</div>	
+						</div>
+					
+						 <div class="example form-inline">
+						 
+							<button type="button" id="getrowdate" class="btn btn-primary queryButton"><i class="fa fa-search"></i>获取选择行数据</button>
+							<button type="button" id="insertrowdate" class="btn btn-primary queryButton"><i class="fa fa-search"></i>插入行数据</button>
+							<button type="button" id="getallrowdate" class="btn btn-primary queryButton"><i class="fa fa-search"></i>获取所有数据</button>
+							<button type="button" id="getrow1date" class="btn btn-primary queryButton"><i class="fa fa-search"></i>得到(data-unique-id="id")对应的数据</button>
+							<button type="button" id="deleterowdate" class="btn btn-primary queryButton"><i class="fa fa-search"></i>删除选中行数据</button>	
+							<button type="button" id="loaddate" class="btn btn-primary queryButton"><i class="fa fa-search"></i>加载数据</button>	
+							<button type="button" id="loaddate" onclick="javascript:$('#exampleTablePagination').bootstrapTable('selectPage', 1);" class="btn btn-primary queryButton"><i class="fa fa-search"></i>到1页</button>	
+						</div> 
+					</div>
+					<!-- End Example Pagination -->
+				</div>
+				
+		  
+		  
+		  
+			</div>
+		</div>
+	
+		
+		<!-- End Panel Other -->
+		
+    </div>
+	<script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript">
+    	/**
+    	*时间控件
+    	*/
+    	setgetdate("dayb");
+	    setgetdate("daye");
+	    
+		/**
+		 * 回调函数
+		 * @param {Object} usetype
+		 * @param {Object} data
+		 */
+		function dofunction(usetype,data){
+			if(usetype=="refresh"){
+					$table.bootstrapTable('selectPage', 1);
+					$table.bootstrapTable('refresh');
+			}
+		}
+		/**
+		*编辑表格数据
+		*/
+		function updatetable(){
+			var rows = $table.bootstrapTable('getSelections');
+			if (rows.length > 0) {
+				// var IDs = rows[0].id;
+				//alert(JSON.stringify(rows));
+				//alert(JSON.stringify(rows));
+				if(rows.length>1){
+					alert("编辑只能选择一行数据");
+				}else{
+					/**
+					*弹出人员编辑
+					*/
+					PopupModalView(rows[0],'refresh','组织机构>>人员编辑','900px','60%','organization/personnelupdate.html');
+				} 
+				
+			}else{
+				alert("未选中数据");
+			}
+		}
+		/**
+		*删除数据
+		*/
+		function deletetable(){
+			var rows = $table.bootstrapTable('getSelections');
+			if (rows.length > 0) {
+				// var IDs = rows[0].id;
+				//alert(JSON.stringify(rows));
+				 var list=new Array();
+				 for(row in rows){
+				 	list[row]=rows[row].id;
+				 }
+				 var durl="${pageContext.request.contextPath}/user/testdeletetable.action";
+				 var ajax=doajax(durl,list);
+				 if(ajax){
+				 	$table.bootstrapTable('selectPage', 1);
+					$table.bootstrapTable('refresh');
+				 }
+			}else{
+				alert("未选中数据");
+			}
+		}
+		/**
+		*查看
+		*/
+		function infotable(index){
+// 			var row1=$table.bootstrapTable('getRowByUniqueId', index);
+// 			alert(JSON.stringify(row1));
+			var _url="${pageContext.request.contextPath}/user/infotable.action?tablejson="+index;
+			PopupModalView(null,'refresh','组织机构>>人员查看','900px','60%',_url);
+		}
+/**
+表格加载
+*/
+		
+var $table;
+$(function() {
+		 $("#exampleTablePagination").bootstrapTable('destroy');
+		 $table= $('#exampleTablePagination').bootstrapTable({
+		    url: "${pageContext.request.contextPath}/user/testtable.action",
+		    height: "450",			 //行高，如果没有设置height属性，
+			uniqueId: "id",          //每一行的唯一标识，一般为主键列
+			cache: false,           //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+			striped: true,          //是否显示行间隔色
+			sortable: true, //是否启用排序
+			sort:"id",
+            sortOrder: "asc",
+			sidePagination: "server",    //分页方式：client客户端分页，server服务端分页（*）
+			pagination:true,
+			mobileresponsive:true,
+			queryParamsType: 'limit',
+			pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+		    iconSize: 'outline',
+		    showColumns: true,
+			showRefresh: true,
+			//refresh:{pageNumber:1},
+			paginationDetailHAlign: 'left',//指定 分页详细信息 在水平方向的位置。'left' 或 'right'。
+			showToggle: true,
+			showColumns: true,
+			showExport:true,
+			//  showExport: phoneOrPc(), index.js中         是否显示导出按钮(此方法是自己写的目的是判断终端是电脑还是手机,电脑则返回true,手机返回falsee,手机不显示按钮)
+		      exportDataType: "basic",              //basic', 'all', 'selected'.
+		      exportTypes:['excel','xlsx'],	    //导出类型
+		      //exportButton: $('#btn_export'),     //为按钮btn_export  绑定导出事件  自定义导出按钮(可以不用)
+		      exportOptions:{  
+		          //ignoreColumn: [0,0],            //忽略某一列的索引  
+		          fileName: '数据导出',              //文件名称设置  
+		          worksheetName: 'Sheet1',          //表格工作区名称  
+		         // tableName: '商品数据表',  
+		          excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],  
+		          //onMsoNumberFormat: DoOnMsoNumberFormat  
+		      },	//导出excel表格设置<<<<<<<<<<<<<<<<
+			  	
+ 
+			pageSize: 2, 
+			pageList: [2, 3, 8],        //可供选择的每页的行数（*）
+			toolbar: '#exampleToolbar', //使用工具条
+		    icons: {
+		      refresh: 'glyphicon-repeat',
+		    //  toggle: 'glyphicon-list-alt',
+		      toggleOff: 'glyphicon-list-alt icon-list-alt',
+          	  toggleOn: 'glyphicon-list-alt icon-list-alt',  
+		      columns: 'glyphicon-list',
+		      detailOpen: 'glyphicon-plus icon-plus',
+			  detailClose: 'glyphicon-minus icon-minus',
+			  export:'fa fa-download',
+			 // export: 'glyphicon-export icon-share',
+			  fullscreen: 'glyphicon-fullscreen'
+		    },		 
+		     detailView:true,
+//		  detailFormatter:function(index, row){
+//			var html = [];
+//			$.each(row, function (key, value) {
+//				html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+//			})
+//		},
+			onExpandRow: function (index, row, $detail) {
+			  /* eslint no-use-before-define: ["error", { "functions": false }]*/
+		 		$detail.html('这里显示的注释');
+		 	},
+		    
+		    //行点击  响应事件
+// 		    onClickRow:function (row,$element) {
+//                 $('.info').removeClass('info');
+//                 $($element).addClass('info');
+//                 alert("当前点击行"+JSON.stringify(row));
+//             },
+		  //得到查询的参数
+          queryParams : function (params) {
+//                     //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                     var temp = {   
+                         rows: params.limit,                         //页面大小
+                         page: (params.offset / params.limit) + 1,   //页码
+                         sort: params.sort,      //排序列名  
+                         sortOrder: params.order, //排位命令（desc，asc）
+                         searchjson:JSON.stringify(gridReloadjson())	//查询参数			 
+                     };
+					 
+					// alert(params.limit);
+					// alert(JSON.stringify(gridReloadjson()));
+                     return temp;
+          },
+			columns:[{
+				checkbox: true,  
+				visible: true                  //是否显示复选框  
+			}, {
+				field: 'id',
+				title: 'id',
+				hidden: true
+			}, {
+				field: 'rowid', //后台未传输当前对象的值
+				title: '操作',
+				width: 320,
+				visible:true,
+				align: 'center',
+				formatter:rowbutton
+				//hidden: true
+			}, {
+				field: 'name',
+				title: '姓名',
+				sortable: true,
+				width: 320,
+				align: 'center'
+			
+			}, {
+				field: 'sex',
+				title: '性别',
+				sortable: true,
+				width: 320,
+				align: 'center',
+				formatter:peronsex
+				
+			}, {
+				field: 'day',
+				title: '生日',
+				sortable: true,
+				width: 320,
+				align: 'center'
+				
+			}]
+			 
+		  });
+		  // 设置隐藏列
+		  $table.bootstrapTable('hideColumn', 'id');
+		  //下拉级联
+		  /**
+		  *可以设置按钮
+		  *formatter:peronsex
+		  */
+		  function peronsex(value,row,index){
+		  	if(value=="1")return "男";
+		  	if(value=="0")return "女";
+		  }
+		  function rowbutton(value,row,index){
+// 		  	alert(row.id);  value为空值
+		//	alert(index);
+		  	return [
+		  	"<button type='button' onclick='infotable("+row.id+")' class='btn btn-default btn-sm'><i class='fa fa-search'></i>查看</button>&nbsp;&nbsp;",
+		  	"<button type='button' onclick='infotable("+row.id+")' class='btn btn-default btn-sm'><i class='fa fa-search'></i>查看</button>"
+		  	].join("");
+		  }
+		  
+//获取选中行数据
+	$("#getrowdate").click(function(){
+		var rows = $table.bootstrapTable('getSelections');
+			if (rows.length > 0) {
+				// var IDs = rows[0].id;
+				alert(JSON.stringify(rows));
+			}else{
+				alert("未选中数据");
+			}
+	});
+//插入行数据
+	$("#insertrowdate").click(function(){
+		var row={
+        "id": 0,
+        "name": "插入数据1",
+        "price": "&yen;0",
+        "column1": "c10",
+        "column2": "c20",
+        "column3": "c30",
+        "column4": "c40"
+    };
+		$table.bootstrapTable('insertRow', {index: 0, row: row});
+	});
+//获取所有数据
+	$("#getallrowdate").click(function(){
+		var date=$table.bootstrapTable('getData');
+		alert(JSON.stringify(date));
+	});
+//删除选中的数据
+	$("#deleterowdate").click(function(){
+		var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+		  return row.price //price
+		})
+		if(ids.length==0){
+			alert("请选择删除行！！");
+			return;
+		}
+		$table.bootstrapTable('remove', {
+		  field: 'price',  //price
+		  values: ids
+		})
+		// $table.bootstrapTable('removeAll'); //清空列表
+	});
+//得到第一行数据
+	$("#getrow1date").click(function(){
+		var row1=$table.bootstrapTable('getRowByUniqueId', 1);
+		alert(JSON.stringify(row1));
+	});
+//加载数据
+	$("#loaddate").click(function(){
+		var data=[{
+		    "id": 0,
+		    "name": "插入数据1",
+		    "price": "&yen;0",
+		    "column1": "c10",
+		    "column2": "c20",
+		    "column3": "c30",
+		    "column4": "c40"
+		},{
+		    "id": 1,
+		    "name": "插入数据2",
+		    "price": "&yen;0",
+		    "column1": "c10",
+		    "column2": "c20",
+		    "column3": "c30",
+		    "column4": "c40"
+		}];
+		$table.bootstrapTable('load', data);
+	});
+//数据追加  $table.bootstrapTable('append', data).
+//数据前加  $table.bootstrapTable('prepend', data)
+//修改某行数据  $table.bootstrapTable('updateRow', {index: 1, row: row})
+//列表刷新 $table.bootstrapTable('refresh')
+	
+//展示某列 $table.bootstrapTable('showColumn', 'name')
+//隐藏某列 $table.bootstrapTable('hideColumn', 'name')	
+
+
+// $table.bootstrapTable('scrollTo', 0)  滚动到第一行
+// $table.bootstrapTable('scrollTo', number) 滚动到第number 行
+// $table.bootstrapTable('scrollTo', 'bottom')	滚动到底部展示
+
+// $table.bootstrapTable('selectPage', 1)  翻页到第一页
+// $table.bootstrapTable('prevPage')	翻页到第一页
+// $table.bootstrapTable('nextPage')	翻页到最后一页
+
+
+ // $table.bootstrapTable('toggleView') 竖视图
+
+
+/**
+ * 表格搜索 表格查询  $table
+ */
+$("#search_button").click(function(){
+	gridReload();
+})
+/**
+ * 表格搜索 表格查询 回车事件 $table
+ */
+var $tablesearch=document.getElementsByName("tablesearch");
+$.each($tablesearch,function(index,optionval){      
+		// alert($(this).val());
+	$(this).keydown(function(event){
+		if(event.which=="13")gridReload();
+	})			 
+}); 
+/**
+ * 表格搜索 表格查询  $table
+ */ 
+function gridReload(){
+
+	var search= {
+	  //  url: "/mes/tablegetJsonstable.action",
+	    silent: true,
+	    query:{
+	        type:1,
+	        level:2
+	    },
+	//	actjson:obj
+	}
+	$table.bootstrapTable('selectPage', 1);
+	$table.bootstrapTable('refresh', search);
+}
+function gridReloadjson(){
+	var obj=new Object();
+	var $tablesearch=document.getElementsByName("tablesearch");
+	for(var i=0;i<$tablesearch.length;i++){
+	  var st=$tablesearch[i];
+	  obj[st.id]=st.value;
+	}
+	return obj;
+}
+
+});
+   </script>
+   
+------------------------------样式分界线-----上面是单个table列表界面-------样式分界线-----------------------------------------------
+
+
+<nav class="navigation" >
+		<span class="title" >首页</span>
+		<span class="title" >-</span>
+		<span class="title" >导航模板</span>
+		<span class="title" >-</span>
+		<span class="titlethis" >模板</span>
+</nav>
+
+  <div class="wrapper wrapper-content animated fadeInRight">
+		 <!-- Panel Other -->
+			
+		<div class="ibox-content">
+			<h5>树形选择--级联table表单重加载</h5>
+			<div class="row row-lg">
+				<div class="col-sm-3 ">
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>树形>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>					 -->
+					    <div class="ibox float-e-margins">
+<!-- 							<h5>部门操作</h5> -->
+<!-- 					        <div class="ibox-title"> -->
+<!-- 					           <div class="form-group treeviewtitle"> -->
+<!-- 									<a href="javascript:;"  class="btn btn-primary queryButton btn-sm form-control-btn"> -->
+<!-- 											<i class="glyphicon glyphicon-plus"></i>新 增</a> -->
+<!-- 									<a href="javascript:;" class="btn btn-info queryButton btn-sm form-control-btn"> -->
+<!-- 											<i class="fa fa-wrench"></i>编 辑</a> -->
+<!-- 									<a href="javascript:;" class="btn btn-warning queryButton btn-sm form-control-btn"> -->
+<!-- 											<i class="glyphicon glyphicon-trash"></i>删 除</a>				 -->
+<!-- 					           </div> -->
+<!-- 					        </div> -->
+					        <div class="ibox-content">
+								<div id="treeview" class="test"></div>
+					        </div>
+					    </div>
+<!--              树形结构引入js脚本        	 -->
+<script src="../js/plugins/treeview/bootstrap-treeview.js"></script>	
+
+<script type="text/javascript">
+// 	var json = '[' +
+// 	        '{' +
+// 	        '"text": "父节点 1",' +
+// 			'"id": "1",'+
+// 	        '"nodes": [' +
+// 	        '{' +
+// 	        '"text": "子节点 1",' +
+// 			'"id": "2",'+
+// 	        '"nodes": [' +
+// 	        '{' +
+// 	        '"text": "孙子节点 1",' +
+// 			'"id": "3"'+
+// 	        '},' +
+// 	        '{' +
+// 	        '"text": "孙子节点 2",' +
+// 			'"id": "4"'+
+// 	        '}' +
+// 	        ']' +
+// 	        '},' +
+// 	        '{' +
+// 	        '"text": "子节点 2",' +
+// 			'"id": "5"'+
+// 	        '}' +
+// 	        ']' +
+// 	        '},' +
+// 	        '{' +
+// 	        '"text": "父节点 2",' +
+// 			'"id": "1"'+
+// 	        '},' +
+// 	        '{' +
+// 	        '"text": "父节点 3",' +
+// 			'"id": "1"'+
+// 	        '},' +
+// 	        '{' +
+// 	        '"text": "父节点 4",' +
+// 			'"id": "1"'+
+// 	        '},' +
+// 	        '{' +
+// 	        '"text": "父节点 5",' +
+// 			'"id": "1"'+
+// 	        '}' +
+// 	        ']';
+// 	$('#treeview').treeview({
+// 			 color: "#5F6368",
+// 			 expandIcon: 'glyphicon glyphicon-chevron-right',
+// 			 collapseIcon: 'glyphicon glyphicon-chevron-down',
+// 			nodeIcon: 'fa fa-users',
+// 			 data: defaultData,
+// 			onNodeSelected: function (event, node) {
+// 			   alert('您单击了 text=' + node.text +',id=' +node.id);
+// 			}
+// 	});
+	
+	$.getJSON("${pageContext.request.contextPath}/show/tree.action"+"?rundd="+new Date().getTime(),function(datas){
+		 $('#treeview').treeview({
+			 color: "#5F6368",
+			 expandIcon: 'glyphicon glyphicon-chevron-right',
+			 collapseIcon: 'glyphicon glyphicon-chevron-down',
+			 nodeIcon: 'fa fa-users',
+		     data:datas,        //"${pageContext.request.contextPath}/show/tree.action",
+			 onNodeSelected: function (event, node) {
+// 			   alert('您单击了 text=' + node.text +',id=' +node.id);
+			   gettablebytree(node.id);
+			}
+		});
+	});
+	
+	var _tablebytreeid="0";
+	function gettablebytree(id){
+		_tablebytreeid=id;
+		var search= {
+			    silent: true,
+			    query:{
+			        type:1,
+			        level:2
+			    },
+			}
+		$tables.bootstrapTable('refresh', search);
+	}
+	
+	
+</script>
+<!--              上为树形结构引入js脚本        	 -->	
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>树形结束>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>					 -->			
+				</div>	
+				
+	
+				<div class="col-sm-9 leftbottom">
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>树形级联表格table>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>					 -->				
+					<!-- Example Pagination -->
+					<div class="example-wrap">
+							 
+							 	
+						<div class="example">
+							 
+							 
+							<div class="scrollbar" >
+								<table id="TreeTablePagination"  ></table>
+							</div>	
+						</div>
+					
+						 
+					</div>
+					<!-- End Example Pagination -->
+  <script type="text/javascript">
+	    
+		var $tables;
+		(function() {
+			$tables=$("#TreeTablePagination");
+			
+				 $tables.bootstrapTable('destroy');
+				 $tables.bootstrapTable({
+				    url: "${pageContext.request.contextPath}/show/treetable.action",
+				    height: "450",			 //行高，如果没有设置height属性，
+					uniqueId: "id",          //每一行的唯一标识，一般为主键列
+					cache: false,           //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+					striped: true,          //是否显示行间隔色
+					pagination:true,
+					sidePagination: "server",    //分页方式：client客户端分页，server服务端分页（*）
+					pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+				    iconSize: 'outline',
+				    showColumns: true,
+					showRefresh: true,
+					showToggle: true,
+					showColumns: true,
+					pageSize: 100, 
+					pageList: [5, 10, 25,100],        //可供选择的每页的行数（*）
+				//	toolbar: '#exampleToolbar', //使用工具条
+				    icons: {
+				      refresh: 'glyphicon-repeat',
+				      toggle: 'glyphicon-list-alt',
+				      columns: 'glyphicon-list'
+				    },
+				  //得到查询的参数
+		         queryParams : function (params) {
+		                    //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+		                    var temp = {   
+		                        rows: params.limit,                         //页面大小
+		                        page: (params.offset / params.limit) + 1,   //页码
+		                        sort: params.sort,      //排序列名  
+		                        sortOrder: params.order ,//排位命令（desc，asc） 
+				 			    actjson:_tablebytreeid	//查询参数	
+		                    };
+						//	alert(JSON.stringify(params));
+		                    return temp;
+		         },
+					columns:[{
+						checkbox: true,  
+						visible: true                  //是否显示复选框  
+					}, {
+						field: 'id',
+						title: 'id',
+						hidden:true
+		//				visible:false
+					}, {
+						field: 'name',
+						title: '姓名',
+						sortable: true,
+						width: 320,
+						align: 'center'
+					
+					}, {
+						field: 'sex',
+						title: '性别',
+						sortable: true,
+						width: 120,
+						align: 'center',
+						formatter:peronsex
+						
+					}, {
+						field: 'birthday',
+						title: '生日',
+						sortable: true,
+						width: 120,
+						align: 'center'
+						
+					}, {
+						field: 'remarks',
+						title: '备注',
+						sortable: true,
+						width: 120,
+						align: 'center'
+					}, {
+						field: 'parentid',
+						title: '父级id',
+						width: 120,
+						hidden:true,
+					}]
+					 
+				  });
+				  // 设置隐藏列
+		  $tables.bootstrapTable('hideColumn', 'id');
+		 		 /**
+		  *可以设置按钮
+		  *formatter:peronsex
+		  */
+		  function peronsex(value,row,index){
+		  	if(value=="1")return "男";
+		  	if(value=="0")return "女";
+		  }
+		
+		})();
+		 
+   </script>				
+				
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>树形级联表格table结束>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>					 -->					
+				</div>
+				
+		 
+		  
+		  
+		  
+		  
+			</div>
+		</div>
+	
+		
+		<!-- End Panel Other -->
+		
+    </div>
+	
+----------------以上树形和table级联功能---------------------------------------------------------------
+<br/>
+----------------下面是table的级联功能---------------------------------------------------------------
+<nav class="navigation" >
+		<span class="title" >首页</span>
+		<span class="title" >-</span>
+		<span class="title" >导航模板</span>
+		<span class="title" >-</span>
+		<span class="titlethis" >table级联模板</span>
+	</nav>
+
+ <div class="wrapper wrapper-content animated fadeInRight">
+		 <!-- Panel Other -->
+			
+		<div class="ibox-content">
+			<h5>table选择--级联table表单重加载</h5>
+			<div class="row row-lg">
+			     <div class="col-sm-12">
+			    	 <div class="form-group col-sm-1">
+					 </div>
+				     <div class="form-group col-sm-8">
+						 <input type="text" class="form-control" id="parentchlidtable"  placeholder="请输入查询">
+					 </div>
+					 <div class="form-group  col-sm-2">
+						 <a id="parentchlidtablebutton" href="javascript:;" class="btn btn-primary queryButton btn-sm form-control-btn"><i class="fa fa-search"></i>查 询</a>
+					 </div>
+					 <div class="form-group col-sm-1">
+					 </div>
+			     </div> 
+				
+				<div class="col-sm-3 ">
+					    <div class="ibox float-e-margins">
+					         
+								<table id="TableParentPagination"  ></table>
+					    </div>
+
+
+<script type="text/javascript">
+				 $("#TableParentPagination").bootstrapTable('destroy');
+				 $("#TableParentPagination").bootstrapTable({
+				    url: "${pageContext.request.contextPath}/show/parenttable.action",
+				    height: "450",			 //行高，如果没有设置height属性，
+					uniqueId: "id",          //每一行的唯一标识，一般为主键列
+					cache: false,           //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+					striped: true,          //是否显示行间隔色
+					//pagination:true,
+					sidePagination: "server",    //分页方式：client客户端分页，server服务端分页（*）
+					pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+// 				    iconSize: 'outline',
+// 					pageSize: 100, 
+// 					pageList: [5, 100, 250],        //可供选择的每页的行数（*）
+// 					toolbar: '#exampleToolbar', //使用工具条
+				     
+							    //行点击  响应事件
+		   		   onClickRow:function (row,$element) {
+						 $('.info').removeClass('info');
+                   		 $($element).addClass('info');
+						var ids=row.id;
+						gettablebyParent(ids);
+            		},
+				 
+					columns:[{
+						field: 'id',
+						title: 'id',
+						hidden:true
+					}, {
+						field: 'name',
+						title: '姓名',
+// 						sortable: true,
+						//width: 320,
+						align: 'center'
+					}]
+					 
+				  });
+			// 设置隐藏列
+		  $("#TableParentPagination").bootstrapTable('hideColumn', 'id');
+	var _tablebyParentid="0";
+	function gettablebyParent(id){
+		_tablebyParentid=id;
+		var search= {
+				url: "${pageContext.request.contextPath}/show/treetable.action",
+			    silent: true,
+			    query:{
+			        type:1,
+			        level:2
+			    },
+			}
+		$tablechild.bootstrapTable('refresh', search);
+	}
+ 	//搜索框查询
+ 	//propertychange   
+	$("#parentchlidtable").bind("input change",function(){
+     	parentchlidtable_search();
+	})
+	$("#parentchlidtablebutton").click(function(){
+		parentchlidtable_search();
+	})
+	function parentchlidtable_search(){
+		var val=$("#parentchlidtable").val();
+		if(!val||val==""){
+			$("#TableParentPagination tbody tr:eq(0)").addClass('info'); 
+			//$("#TableParentPagination").find("tbody").find("tr")[0].addClass('info');
+			_tablebyParentid="0";
+			var search= {
+					url: "${pageContext.request.contextPath}/show/treetable.action",
+					silent: true,
+					query:{
+						type:1,
+						level:2
+					},
+				}
+			$tablechild.bootstrapTable('refresh', search);
+			return;
+		}
+		$('.info').removeClass('info');
+		_tablebyParentid=val;
+		//decodeURIComponent(_tablebyParentid,true)
+		//_tablebyParentid=encodeURI(encodeURI(_tablebyParentid));
+// 		alert(val);
+		var search= {
+				url: "${pageContext.request.contextPath}/show/treeinputtable.action",
+			    silent: true,
+			    query:{
+			        type:1,
+			        level:2
+			    },
+			}
+		$tablechild.bootstrapTable('refresh', search);
+	}
+</script>
+			
+				</div>	
+				
+	
+				<div class="col-sm-9 leftbottom">
+				
+					<!-- Example Pagination -->
+					<div class="example-wrap">
+							 
+						<div class="example">
+							 
+ 
+							<div class="scrollbar" >
+								<table id="tablechildPagination"  ></table>
+							</div>	
+						</div>
+					
+					 
+						
+					</div>
+					<!-- End Example Pagination -->
+  <script type="text/javascript">
+		
+		var $tablechild;
+		(function() {
+			$tablechild=$("#tablechildPagination");
+			
+				 $tablechild.bootstrapTable('destroy');
+				 $tablechild.bootstrapTable({
+				    url: "${pageContext.request.contextPath}/show/treetable.action",
+				    height: "450",			 //行高，如果没有设置height属性，
+					uniqueId: "id",          //每一行的唯一标识，一般为主键列
+					cache: false,           //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+					striped: true,          //是否显示行间隔色
+					sidePagination: "server",    //分页方式：client客户端分页，server服务端分页（*）
+					pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+				    iconSize: 'outline',
+					pageSize: 100, 
+					pageList: [5, 100, 250],        //可供选择的每页的行数（*）
+				  //得到查询的参数
+			         queryParams : function (params) {
+			                    //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+			                    var temp = {   
+			                        rows: params.limit,                         //页面大小
+			                        page: (params.offset / params.limit) + 1,   //页码
+			                        sort: params.sort,      //排序列名  
+			                        sortOrder: params.order ,//排位命令（desc，asc） 
+					 			    actjson: _tablebyParentid	//查询参数	
+			                    };
+							//	alert(JSON.stringify(params));
+			                    return temp;
+			         },
+					columns:[{
+						checkbox: true,  
+						visible: true                  //是否显示复选框  
+					}, {
+						field: 'id',
+						title: 'id',
+						hidden:true,
+		//				visible:false
+					}, {
+						field: 'name',
+						title: '姓名',
+						sortable: true,
+						width: 320,
+						align: 'center'
+					
+					}, {
+						field: 'sex',
+						title: '性别',
+						sortable: true,
+						width: 120,
+						align: 'center'
+						
+					}, {
+						field: 'birthday',
+						title: '生日',
+						sortable: true,
+						width: 120,
+						align: 'center'
+						
+					}, {
+						field: 'remarks',
+						title: '备注',
+						sortable: true,
+						width: 120,
+						align: 'center'
+					}, {
+						field: 'parentid',
+						title: '父级id',
+						width: 120,
+						hidden:true,
+					}]
+					 
+				  });
+		
+		})();
+		 
+   </script>				
+				
+				</div>
+		  
+			</div>
+		</div>
+    </div>
+	
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>table级联表格table结束>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
+	 <br/>
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>页签使用>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
+ <nav class="navigation" >
+			<span class="title" >首页</span>
+			<span class="title" >-</span>
+			<span class="title" >积分管理</span>
+			<span class="title" >-</span>
+			<span class="titlethis" >积分奖扣</span>
+				
+		</nav>
+		
+		<div class="tabs-container tabrow">
+		    <ul class="nav nav-tabs">
+		        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> 第一个选项卡</a>
+		        </li>
+		        <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">第二个选项卡</a>
+		        </li>
+				<li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false">第三个选项卡</a>
+		        </li>
+		    </ul>
+		</div>
+		
+-----------------------页签内容位于panel-body中----------------------------------------------		
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="ibox-content">
+				<div class="tabs-container">
+				    <div class="tab-content">
+				        <div id="tab-1" class="tab-pane active">
+				            <div class="panel-body">
+								<div class="form-inline">
+									<div class="btn-group">
+										<button class="btn btn-default" type="button">最近两月</button>
+										<button class="btn btn-default" type="button">上月</button>
+										<button class="btn btn-default" type="button">本月</button>
+									</div>
+							
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="查询搜索">
+										<span class="input-group-btn">
+										<button class="btn btn-primary active" type="button">查询</button>
+									  </span>
+									</div>
+							
+									<div class="btn-group">
+										<button class="btn btn-default" type="button">重置</button>
+									</div>
+									
+									<div class="btn-group">
+										<button class="btn btn-info dropdown-toggle" type="button">高级查询</button>
+									</div>
+								</div>
+								<div class="form-inline">
+								
+									<div class="scrollbar" >
+										<table id="Integralaward" data-toggle="table" 
+										 data-unique-id="id"  data-striped="true"  data-query-params="queryParams" data-mobile-responsive="true" data-height="520" data-pagination="true" data-icon-size="outline" >
+										</table>
+								</div>
+<script type="text/javascript">
+var $Integralaward;
+		(function() {
+			$Integralaward=$("#Integralaward");
+			
+				 $Integralaward.bootstrapTable('destroy');
+				 $Integralaward.bootstrapTable({
+				    url: "${pageContext.request.contextPath}/show/treetable.action",
+				    height: "450",			 //行高，如果没有设置height属性，
+					uniqueId: "id",          //每一行的唯一标识，一般为主键列
+					cache: false,           //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+					striped: true,          //是否显示行间隔色
+					sidePagination: "server",    //分页方式：client客户端分页，server服务端分页（*）
+					pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+				    iconSize: 'outline',
+					pageSize: 100, 
+					pageList: [5, 100, 250],        //可供选择的每页的行数（*）
+				  //得到查询的参数
+			         queryParams : function (params) {
+			                    //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+			                    var temp = {   
+			                        rows: params.limit,                         //页面大小
+			                        page: (params.offset / params.limit) + 1,   //页码
+			                        sort: params.sort,      //排序列名  
+			                        sortOrder: params.order ,//排位命令（desc，asc） 
+					 			    actjson: '1'	//查询参数	
+			                    };
+							//	alert(JSON.stringify(params));
+			                    return temp;
+			         },
+					columns:[{
+						checkbox: true,  
+						visible: true                  //是否显示复选框  
+					}, {
+						field: 'id',
+						title: 'id',
+						hidden:true,
+		//				visible:false
+					}, {
+						field: 'name',
+						title: '姓名',
+						sortable: true,
+						width: 320,
+						align: 'center'
+					
+					}, {
+						field: 'sex',
+						title: '性别',
+						sortable: true,
+						width: 120,
+						align: 'center'
+						
+					}, {
+						field: 'birthday',
+						title: '生日',
+						sortable: true,
+						width: 120,
+						align: 'center'
+						
+					}, {
+						field: 'remarks',
+						title: '备注',
+						sortable: true,
+						width: 120,
+						align: 'center'
+					}, {
+						field: 'parentid',
+						title: '父级id',
+						width: 120,
+						hidden:true,
+					}]
+					 
+				  });
+		
+		})();
+
+</script>								
+								
+							
+							</div>
+				       
+							</div>
+				        </div>
+						<div id="tab-2" class="tab-pane">
+				            <div class="panel-body">
+				                <strong>移动设备优先</strong>
+				                <p>在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。</p>
+				            </div>
+				        </div>
+						<div id="tab-3" class="tab-pane">
+				            <div class="panel-body">
+				                <strong>移动设备优先</strong>
+				                <p>在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。</p>
+								<p>在 Bootstrap 2 中，我们对框架中的某些关键部分增加了对移动设备友好的样式。而在 Bootstrap 3 中，我们重写了整个框架，使其一开始就是对移动设备友好的。这次不是简单的增加一些可选的针对移动设备的样式，而是直接融合进了框架的内核中。也就是说，Bootstrap 是移动设备优先的。针对移动设备的样式融合进了框架的每个角落，而不是增加一个额外的文件。</p>
+				            </div>
+				        </div>
+						
+						
+					</div>
+				</div>	
+			</div>
+		</div>		
+		
+		
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>页签使用>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
+ 
+</body>
+</html>

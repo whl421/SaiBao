@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://auth.jifenzhi.com/login -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="force-rendering" content="webkit">
+	<meta name="renderer" content="webkit">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-orientation" content="portrait">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>油气回收在线监控平台</title>
+	<link rel="icon shortcut" href="./images/loginicon.ico" type="image/x-icon">	
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+	<!-- loading层 -->
+	<div class="wrapLoading">
+		<div class="loading">
+	        <div><span></span></div>
+	        <div><span></span></div>
+	        <div><span></span></div>
+	        <div><span></span></div>
+		</div>
+	</div>
+	<!-- 顶部banner -->
+	<div class="wrap-header">
+		<div class="header">
+			<div class="left">
+				<div class="pc-logo">
+					<h1><img src="./images/img_logo.png" alt="logo"></h1>
+				</div>
+				<div class="pc-title">
+					<p>群艺积分制应用管理平台</p>
+					<div>
+						<span>快乐积分</span>
+						<span>快乐工作</span>
+						<span>快乐生活</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="right">
+				<span class="android"><i class="icon-android"></i>Android</span>
+				<div class="qr-android" style="display: none;"></div>
+				<span class="iPhone"><i class="icon-iPhone"></i>iPhone</span>
+				<div class="qr-iPhone" style="display: none;"></div>
+			</div>
+			
+		</div>
+	</div>
+	<!-- 登录框 -->
+	<div class="main" style="top: 105px;">
+		<!--手机端才显示 -->
+		<div class="hide wrap-logo">
+			<h1 class="logo">
+				<img src="./images/img_logo.png" alt="logo">
+				<p class="title">快乐积分.快乐工作.快乐生活</p>
+			</h1>
+		</div>
+		<div class="hide wrap-toggle">
+			<ul class="m-login">
+				<!--<li class="m-login-account" th:text="#{internet.login}"></li>-->
+				<!-- <li class="m-login-enterprise" th:text="#{enterprise.login}"></li> -->
+			</ul>
+			<!-- <ul class="m-forget">
+				<li class="m-forgetPsw" th:text="#{reset.password}"></li>
+			</ul>-->
+		</div>
+		<div class="wrapForm login">
+			<h1 class="login-account-title hide">账户登录</h1>
+			<h1 class="hide login-enterprise-title">企业账户登录</h1>
+			<form id="login" method="post" action="https://auth.jifenzhi.com/login">
+				<div class="wrapInput">
+					<div class="input loginname">
+						<i class="icon ic-loginname"></i>
+						<div class="input-right">
+							<input type="text" class="loginname-input hide" autocomplete="off" name="loginname" style="background-color: rgb(255, 255, 255) !important;" placeholder="账号/手机号">
+							<input type="text" class="enterprise-input" autocomplete="off" name="workname" style="background-color: rgb(255, 255, 255) !important;" placeholder="账号">
+							<i class="del"></i>
+						</div>
+					</div>
+					<div class="input">
+						<i class="icon ic-password"></i>
+						<div class="input-right">
+							<input type="password" autocomplete="off" name="password" style="background-color: rgb(255, 255, 255) !important;" placeholder="密码">
+							<i class="visualPsw"></i>
+						</div>
+					</div>
+					<!-- <div class="enterprise input">-->
+					
+					<div class="input entrepreneur">
+						<i class="icon ic-enterprise"></i>
+						<div class="input-right">
+							<input type="input" class="enterprise-input" autocomplete="off" name="enterprise" style="background-color: rgb(255, 255, 255) !important;" placeholder="企业代码">
+							<i class="del"></i>
+						</div>
+					</div>
+					
+					<div class="input verifyCode">
+						<i class="icon ic-verifyCode"></i>
+						<div class="input-right">
+							<input type="text" name="verifyCode" placeholder="验证码">
+							<img src="https://auth.jifenzhi.com/login" onclick="changeVerifyCode()" id="yzmImg" alt="验证码">
+						</div>
+					</div>
+					<div class="err-tip"></div>
+					<div class="wrap-psw">
+						<div class="check">
+							<input type="checkbox" id="checkbox_sel" class="selectBetting"><span class="checkbox"></span>
+							<span class="rmbPsw">记住密码</span>
+						</div>
+						<span class="forgetPsw">忘记密码</span>
+					</div>
+					<div style="margin: 0 0 0 2px;">
+						<input type="hidden" name="username">
+						<button type="button" class="loginbtn disable-btn" disabled="true">登录</button>
+					</div>
+					<div class="toggle-text hide">
+						<p class="login-enterprise"><span class="login-tip">企业账户登录</span></p>
+						<p class="hide login-account"><span class="login-tip">账户登录</span></p>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div class="wrapForm form-psw">
+			<h1 class="login-forgetPsw">重置密码</h1>
+			<form>
+				<div class="wrapInput">
+					<div class="input loginname">
+						<span class="label">绑定手机号</span>
+						<div class="input-forcode">
+							<input type="text" placeholder="请输入" class="loginname-input hide" autocomplete="off" name="phonenum" style="background-color: rgb(255, 255, 255) !important;">
+						</div>
+					</div>
+					<div class="input">
+						<span class="label">短信验证码</span>
+						<div class="input-forcode input-code">
+							<input type="text" placeholder="请输入" class="loginname-input hide" autocomplete="off" name="msgCode" style="background-color: rgb(255, 255, 255) !important;">
+						</div>
+						<span class="send-code">发送验证码</span>
+					</div>
+					<div class="input">
+						<span class="label">设置新密码</span>
+						<div class="input-forcode">
+							<input type="password" placeholder="密码" autocomplete="off" name="newPsw" style="background-color: rgb(255, 255, 255) !important;">
+							<i class="visualPsw"></i>
+						</div>
+						<div class="input-tip">
+							<p>密码含字母、数字、符号至少2种，长度不低于6位</p>
+						</div>
+					</div>
+					<div class="err-tip"></div>
+					<div style="margin: 0 0 0 2px;">
+						<input type="hidden" name="username">
+						<button type="button" class="comfirebtn disable-btn" disabled="true">确定</button>
+					</div>
+					<div class="toggle-text hide">
+						<p class="to-login">已有账号 <span class="login-tip">去登录</span></p>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+	</div>
+	<!-- 页脚 -->
+		<div class="login-footer">
+			<p>群艺积分制应用管理平台 v1.0.0</p>
+		</div>
+	<!-- 遮罩层 -->
+	<div class="mask"></div> 
+	<!-- 遮罩层里的提示框 -->
+	<div class="tipbox">
+		<p class="msg">请联系管理员</p>
+		<span class="back" onclick="hideMask()">知道了</span>
+	</div>
+	
+	<script src="./js/jquery_2.1.4.min.js"></script>
+	<script src="./js/login.js"></script>
+
+</body></html>

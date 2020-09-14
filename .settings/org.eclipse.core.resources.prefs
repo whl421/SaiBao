@@ -1,0 +1,14 @@
+#Tue Dec 10 21:52:57 CST 2019
+eclipse.preferences.version=1
+encoding//WebRoot/jsp/manageIntegral/css/organization.css=UTF-8
+encoding//WebRoot/jsp/manageIntegral/organization/organization.html=UTF-8
+encoding//WebRoot/jsp/manageIntegral/organization/personneladded.html=UTF-8
+encoding//WebRoot/jsp/manageIntegral/organization/personneladded_a.html=UTF-8
+encoding//WebRoot/jsp/manageIntegral/organization/personnelinfo.jsp=UTF-8
+encoding//WebRoot/jsp/manageIntegral/organization/personnelupdate_a.html=UTF-8
+encoding//WebRoot/jsp/manageIntegral/showtest/showtest.jsp=UTF-8
+encoding//resources/jdbc.properties=UTF-8
+encoding//src/com/cqmi/db/dao/ContextDataSource.java=UTF-8
+encoding//src/com/cqmi/db/dao/MybatisSessionDataSource.java=UTF-8
+encoding//src/com/cqmi/db/dao/SQLProxy.java=UTF-8
+encoding/<project>=UTF-8

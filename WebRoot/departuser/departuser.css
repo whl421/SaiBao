@@ -1,0 +1,105 @@
+.departtable{
+	background: #FFF;
+	width:100%;
+	min-height:200px;
+	max-height:450px;
+	border-radius:15px !important;
+	border:1px double #B6B4B6;
+}
+table{
+	border-collapse: separate;
+	border-spacing: 2px;
+}
+tbody {
+	vertical-align: inherit;
+	border-color: inherit;
+	border: 0px;
+	width: 100%;
+}
+.list-group-item {
+	border:0px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+ 
+td div {
+	display: block;
+}
+.usercheck{
+	float:left;width:100%;height:410px;padding-left:30px;padding-top:10px; 
+}
+.usercheck p{
+	width:100%;
+	float:left;
+	min-width: 200px;
+}
+.zdc{
+	float:left;
+	width: 37px;
+	height: 37px;
+	background: url(${pageContext.request.contextPath}/layui/css/modules/layer/default/loading-1.gif) no-repeat;
+	text-align: center;
+	vertical-align: middle;
+	margin-left: 43%;
+	margin-top: 56%;
+}
+.departuser{
+	width: 30%;
+    max-height: 300px;
+    word-wrap: break-word;
+    white-space: pre-line;
+    padding: 5px 8px;
+    line-height: 1.3333333;
+    min-height:50px;
+    margin-top:50px;
+    border-radius: 6px;
+    border-color: #C1CFDE;
+    text-align: center;
+    display:block;
+    float:left;
+}
+/* height: 34px; */
+.form-control-button {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    min-height: 34px;
+    text-align:left;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+/* 		font-size: 18px; */
+button {
+    -webkit-appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: buttonface;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>浜哄憳绠＄悊鏂板</title>
+		<meta name="keywords" content="H+鍚庡彴涓婚,鍚庡彴bootstrap妗嗘灦,浼氬憳涓績涓婚,鍚庡彴HTML,鍝嶅簲寮忓悗鍙�>
+		<meta name="description" content="H+鏄竴涓畬鍏ㄥ搷搴斿紡锛屽熀浜嶣ootstrap3鏈�柊鐗堟湰寮�彂鐨勬墎骞冲寲涓婚锛屽ス閲囩敤浜嗕富娴佺殑宸﹀彸涓ゆ爮寮忓竷灞�紝浣跨敤浜咹tml5+CSS3绛夌幇浠ｆ妧鏈�>
+		
+		<link rel="shortcut icon" href="H5.ico"> 
+		<link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+		<link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+		<script src="../js/jquery.min.js?v=2.1.4"></script>
+		<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+		<link href="../css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"></link> 
+		<script src="../js/bootstrap-datetimepicker.min.js"></script>
+		<script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link href="../css/form.css?v=4.1.0" rel="stylesheet">
+	</head>
+	<body class="gray-bg" >
+		
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="ibox-content col-sm-12">
+				
+			  <div class="row col-sm-12 form-inline">
+				<div class="form-group col-sm-6">
+					<label  class="date-label col-sm-4">濮撳悕锛�/label>
+					<input type="text" class="form-control col-sm-8" 
+					 null="no" id="name" name="manageIntegral" >
+					<span class="errorspan">濮撳悕涓嶈兘涓虹┖</span>
+				</div>
+				
+				<div class="form-group col-sm-6">
+					<label  class="date-label col-sm-4">鎬у埆锛�/label>
+					<select class="form-control col-sm-8" data-done-button="true"
+					 title="鎬у埆閫夋嫨" 
+					 null="no" id="sex" name="manageIntegral" >
+					 <option value="" ></option>
+					  <option value="1" >鐢�/option>
+					  <option value="0" >濂�/option>
+					</select>
+					<span class="errorselectspan">涓嶈兘涓虹┖</span>
+				</div>
+			  </div>
+			
+			 <div class="row col-sm-12 form-inline">
+				<div class="form-group col-sm-6">
+					<label  class="date-label col-sm-4">鐢熸棩锛�/label>
+					<input type="text" class="form-control date col-sm-8" readonly="readonly"
+					alt="鐢熸棩" null="no" id="day" name="manageIntegral" />
+					<span class="errorspan">鐢熸棩涓嶈兘涓虹┖</span>
+				</div>
+				
+			 </div>	  
+				  
+				  
+			<div class="row col-sm-12 form-inline buttonrow">
+				<div class="form-group col-sm-4">
+				</div>
+				<div class="form-group col-sm-8 form-inline">
+					<div class="btn-group">
+						<button onclick="setadd();"  class="btn btn-primary">
+							<i class="glyphicon glyphicon-ok" aria-hidden="true"></i>淇濆瓨骞舵柊澧炰笅涓�釜
+						</button>
+					</div>
+					
+					<div class="btn-group">
+						<button onclick="giveup();"  class="btn btn-warning">
+							<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>鍙栨秷
+						</button>
+					</div>
+				</div>
+			</div>	  
+			</div>
+		</div>
+		
+		<!-- ../js/index.js  姣忎釜寮瑰嚭琛ㄥ崟閮介渶瑕佸鍏�-->
+		<script type="text/javascript" src="../js/index.js"></script>
+		<script type="text/javascript">
+			
+	/**
+	 * 鐢熸棩
+	 */
+	setgetdate("day");
+// 	$("#day").datetimepicker({
+// 		language: "zh-CN",
+// 		format:"yyyy-mm-dd",
+// 		todayBtn: true,
+// 		autoclose: true,
+// 		startView:2,
+// 		minView: "month", //閫夋嫨鏃ユ湡鍚庯紝涓嶄細鍐嶈烦杞幓閫夋嫨鏃跺垎绉�
+// 		pickerPosition: "bottom-left"
+// 	});
+			
+			/**
+			 * 鏂板
+			 */
+			function setadd(){
+				/**
+				 * 鑾峰彇鍙傛暟鍊�
+				 */
+				var obj=SaveMesDate("manageIntegral");
+				if(!obj["ajax"])return;
+				// alert(JSON.stringify(obj));
+				/**
+				 * 鎻愪氦鍙傛暟
+				 * obj锛氭彁浜ゅ弬鏁�
+				 * true:缁х画鎵ц
+				 */
+				var ajax=doajax("${pageContext.request.contextPath}/user/testaddtable.action",obj);
+				
+// 				alert("ajax"+ajax+",thisiframeid"+thisiframeid);
+				
+				if(ajax){
+						var input = document.getElementsByTagName('input');
+						if(input)
+					    for(i = 0; i < input.length; i++) {   
+					      if(input[i].getAttribute("name") == "manageIntegral" && input[i].getAttribute("type")!="checkbox" 
+					    	  													&& input[i].getAttribute("type")!="radio") {   
+					         var inputid=input[i].getAttribute("id")||input[i]["id"];   
+					         $("#"+inputid).val("");
+					      }   
+					    }
+					    var select = document.getElementsByTagName('select');   
+					    if(select)
+					    for(i = 0; i < select.length; i++) {   
+					      if(select[i].getAttribute("name") == "manageIntegral" ) {   
+					         var selectid=select[i].getAttribute("id")||select[i]["id"];   
+					        $("#"+selectid).val("");
+					      }   
+					    }
+					    var textarea = document.getElementsByTagName('textarea');  
+					    if(textarea)
+					    for(i = 0; i < textarea.length; i++) {   
+					      if(textarea[i].getAttribute("name") == "manageIntegral" ) { 
+					         var textareaid=textarea[i].getAttribute("id")||textarea[i]["id"];  
+					        $("#"+textareaid).text("");
+					        $("#"+textareaid).val("");
+					      }   
+					    }
+				}
+				
+				//window.parent.document.getElementById(window.frameElement.id).contentWindow.location.reload(true);
+			}
+			/**
+			 * 鏀惧純
+			 */
+			function giveup(){
+				//鍏抽棴绐楀彛   			
+				ColseModalView(null);
+			}
+			
+// 			/**
+// 			 * 鍥炶皟鍙傛暟
+// 			 * @param {Object} usetype
+// 			 * @param {Object} data
+// 			 */
+// 			function dofunction(usetype,data){
+// 				if(usetype=="department"){
+// 					$("#departmentname")=data["departmentname"];
+// 					departmentcode=data["departmentcode"];
+// 				}
+// 			}
+ 
+		</script>
+	</body>
+</html>
+ 
+		 

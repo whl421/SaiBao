@@ -1,0 +1,40 @@
+
+[
+    {
+        "id": 0,
+        "scanweight": "测试0",
+        "price": "&yen;0",
+        "status": "2",
+        "column2": "c20",
+        "column3": "c30",
+        "column4": "c40"
+    },
+    {
+        "id": 1,
+        "scanweight": "测试1",
+        "price": "&yen;1",
+        "status": "2",
+        "column2": "c20",
+        "column3": "c30",
+        "column4": "c40"
+    },
+    {
+        "id": 2,
+        "scanweight": "测试2",
+        "price": "&yen;2",
+        "status": "1",
+        "column2": "c20",
+        "column3": "c30",
+        "column4": "c40"
+    },
+    {
+        "id": 3,
+        "scanweight": "测试3",
+        "price": "&yen;3",
+        "status": "1",
+        "column2": "c20",
+        "column3": "c30",
+        "column4": "c40"
+    }
+    
+]

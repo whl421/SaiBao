@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>organization- 组织机构</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <!-- <link rel="shortcut icon" href="H5.ico"> -->
+	<link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+	
+<!-- 	列表控件 -->
+    <link href="../js/dist/bootstrap-table.min.css" rel="stylesheet">
+	<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+    
+	<script src="../js/dist/extensions/export/tableExport.min.js"></script>
+	<script src="../js/dist/bootstrap-table.min.js"></script>
+	<script src="../js/dist/bootstrap-table-locale-all.js"></script>
+	
+	
+	<script src="../js/dist/extensions/export/xlsx.core.min.js"></script>
+	<script src="../js/dist/extensions/export/FileSaver.min.js"></script>
+	<script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="../js/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="../js/dist/extensions/export/bootstrap-table-export.js"></script>
+
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/organization.css?v=4.1.0" rel="stylesheet">
+    
+	<style>
+	   .fixed-table-container thead th .sortable {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC");
+        cursor: pointer;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+       }
+
+      .fixed-table-container thead th .asc {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZ0lEQVQ4y2NgGLKgquEuFxBPAGI2ahhWCsS/gDibUoO0gPgxEP8H4ttArEyuQYxAPBdqEAxPBImTY5gjEL9DM+wTENuQahAvEO9DMwiGdwAxOymGJQLxTyD+jgWDxCMZRsEoGAVoAADeemwtPcZI2wAAAABJRU5ErkJggg==");
+        cursor: pointer;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+     }
+
+    .fixed-table-container thead th .desc {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAZUlEQVQ4y2NgGAWjYBSggaqGu5FA/BOIv2PBIPFEUgxjB+IdQPwfC94HxLykus4GiD+hGfQOiB3J8SojEE9EM2wuSJzcsFMG4ttQgx4DsRalkZENxL+AuJQaMcsGxBOAmGvopk8AVz1sLZgg0bsAAAAASUVORK5CYII= ");
+        cursor: pointer;
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+    }
+	.pull-right.pagination-detail{
+		display:none;
+	}
+	.scrollbar table{
+		min-width:500px;
+	}
+	</style>
+	
+	
+</head>
+
+<body class="gray-bg">
+	<nav class="navigation" >
+		<span class="title" >首页</span>
+		<span class="title" >-</span>
+		<span class="titlethis" >组织机构</span>
+	</nav>
+	 
+	
+    <div class="wrapper wrapper-content animated fadeInRight">
+		 <!-- Panel Other -->
+			
+		<div class="ibox-content">
+			<div class="row row-lg">
+	
+				<div class="col-sm-12">
+					
+					<!-- Example Pagination -->
+					<div class="example-wrap">
+							<h5>人员管理</h5>
+						<div class="example">
+							<div class="scrollbar" >
+								<table id="exampleTablePagination" data-minimum-count-columns="2" >
+								</table>
+							</div>	
+						</div>
+					
+					</div>
+					<!-- End Example Pagination -->
+				</div>
+				
+		  
+		  
+		  
+			</div>
+		</div>
+	
+		
+		<!-- End Panel Other -->
+		
+    </div>
+	<!-- <script type="text/javascript" src="../js/index.js"></script> -->
+    <script type="text/javascript">
+/**
+表格加载
+*/
+		
+var $table;
+$(function() {
+		 $("#exampleTablePagination").bootstrapTable('destroy');
+		 $table= $('#exampleTablePagination').bootstrapTable({
+		    url:"js/demo/bootstrap_table_test.json",   //"${pageContext.request.contextPath}/user/testtable.action",
+			cache: false,           //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+			striped: true,          //是否显示行间隔色
+			sortable: true, //是否启用排序
+			sort:"id",
+            sortOrder: "asc",
+			sidePagination: "client",    //分页方式：client客户端分页，server服务端分页（*）
+			pagination:true,
+			mobileresponsive:true,
+			queryParamsType: 'limit',
+			pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+		    iconSize: 'outline',
+		    showColumns: true,
+			showRefresh: true,
+			//refresh:{pageNumber:1},
+			paginationDetailHAlign: 'left',//指定 分页详细信息 在水平方向的位置。'left' 或 'right'。
+			showToggle: true,
+			showColumns: true,
+			showExport:true,
+			//  showExport: phoneOrPc(), index.js中         是否显示导出按钮(此方法是自己写的目的是判断终端是电脑还是手机,电脑则返回true,手机返回falsee,手机不显示按钮)
+		      exportDataType: "basic",              //basic', 'all', 'selected'.
+		      exportTypes:['excel','xlsx'],	    //导出类型
+		      //exportButton: $('#btn_export'),     //为按钮btn_export  绑定导出事件  自定义导出按钮(可以不用)
+		      exportOptions:{  
+		          //ignoreColumn: [0,0],            //忽略某一列的索引  
+		          fileName: '数据导出',              //文件名称设置  
+		          worksheetName: 'Sheet1',          //表格工作区名称  
+		         // tableName: '商品数据表',  
+		          excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],  
+		          //onMsoNumberFormat: DoOnMsoNumberFormat  
+		      },	//导出excel表格设置<<<<<<<<<<<<<<<<
+			pageSize: 2, 
+			pageList: [2, 3, 8],        //可供选择的每页的行数（*）
+			toolbar: '#exampleToolbar', //使用工具条
+		    icons: {
+		      refresh: 'glyphicon-repeat',
+		      toggleOff: 'glyphicon-list-alt icon-list-alt',
+          	  toggleOn: 'glyphicon-list-alt icon-list-alt',  
+		      columns: 'glyphicon-list',
+		      detailOpen: 'glyphicon-plus icon-plus',
+			  detailClose: 'glyphicon-minus icon-minus',
+			  export:'fa fa-download',
+			  fullscreen: 'glyphicon-fullscreen'
+		    },		 
+			onExpandRow: function (index, row, $detail) {
+		 		$detail.html('这里显示的注释');
+		 	},
+		  //得到查询的参数
+			columns:[
+			[{
+				checkbox: true,  
+				rowspan: 2,
+				visible: true                  //是否显示复选框  
+			}, {
+				field: 'id',
+				title: 'id',
+				rowspan: 2,
+			}, {
+				field: 'rowid', //后台未传输当前对象的值
+				title: '操作',
+				width: 320,
+				visible:true,
+				rowspan: 2,
+				align: 'center',
+			}, {
+				title: '合并列',
+				colspan: 2,
+				align: 'center'
+			},  {
+				field: 'day',
+				title: '生日',
+				rowspan: 2,
+				sortable: true,
+				width: 320,
+				align: 'center'
+				
+			}],,
+					[ {
+						field: 'sex',
+						title: '性别',
+						sortable: true,
+						width: 120,
+						align: 'center'
+						
+					}, {
+						field: 'birthday',
+						title: '生日',
+						sortable: true,
+						width: 120,
+						align: 'center'
+					}]
+			] 
+		  });
+});
+   </script>
+   
+ 
+</body>
+</html>

@@ -1,0 +1,83 @@
+.gray-bg {
+    background-color: #f3f3f4;
+}
+
+.wrapper {
+    padding: 0 20px;
+}
+
+.wrapper-content {
+    padding: 20px;
+}
+
+.ibox-content{
+	background-color: #ffffff;
+	color: inherit;
+	padding: 15px 20px 20px 20px;
+	border-color: #e7eaec;
+	-webkit-border-image: none;
+	-o-border-image: none;
+	border-image: none;
+	border-style: solid solid none;
+	border-width: 1px 0px;
+}
+
+.ibox-content .row{
+	margin-top:15px;
+}
+.form-group .date-label{
+	text-align: right;
+	margin-top: 5px;
+}
+.ibox-content .buttonrow{
+	margin-top: 30px;
+	border-top: 1px solid #e7eaec;
+	padding-top: 20px;
+}
+.errinput{
+	border:1px solid red;
+	opacity: .5 !important;
+}
+.errorspan{
+	display:none;
+	font-size:12px;
+	color:red;
+	margin-left:35%;
+	float:left;
+	line-height:20px;
+	margin-top:-20px;
+}
+.errorselectspan{
+	position: absolute;
+	display:none;
+	font-size:12px;
+	color:red;
+	margin-left:32%;
+	/* float:left; */
+	/* line-height:20px; */
+	margin-top:9px;
+}
+
+.form-group .date {
+    background: #fff url(../img/inputdate.png) no-repeat 98% center;
+	color:#333;
+}
+.tabs-container{
+	background: #FFFFFF;
+}
+.tabrow{
+	margin-top: -5px;
+	width:100%;
+	display: inline-block;
+}
+.btn-group button:hover{
+	color:#1890FF;
+}
+ 
+/* .form-group input:focus{
+	border: 1px solid red;
+}
+.form-group select::focus,
+.form-group textarea::focus{
+	border: 1px solid #ccc;
+} */
