@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import sun.org.mozilla.javascript.internal.regexp.SubString;
-
 import com.alibaba.fastjson.JSONArray;
 import com.cqmi.controller.login.LoginController;
 import com.cqmi.controller.login.bean.User;
